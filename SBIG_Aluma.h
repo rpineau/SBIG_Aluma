@@ -125,17 +125,25 @@ protected:
     void        setCameraConnection(dl::ICameraPtr pCamera, bool enable);
     void        getCoolerMinMax(ISensorPtr pSensor, int & min, int & max);
     void        buildGainList(long nMin, long nMax, long nValue);
-    SleeperInterface        *m_pSleeper;
 
-    camera_info_t       m_Camera;
+    SleeperInterface    *m_pSleeper;
+
+    bool                    m_bConnected;
+    bool                    m_bDeviceIsUSB;
+    bool                    m_bAbort;
+
+    camera_info_t               m_Camera;
     std::vector<camera_info_t>  m_tcameraList;
 
     IGatewayPtr         m_pGateway;
     ICameraPtr          m_pCamera;
 
+    ICamera::Status     m_CameraStatus;
+    double              m_dSetPoint;
+    bool                m_bSupportsCooler;
+
     // Main sensor variables
-    //ISensorPtr          m_pMainSensor;
-    //ISensorPtr          m_pSecondarySensor;
+    ISensor::Info       m_mainSensorInfo;
     bool                m_bIsColorCam;
     int                 m_SupportedBinsX[MAX_NB_BIN];
     int                 m_SupportedBinsY[MAX_NB_BIN];
@@ -144,7 +152,6 @@ protected:
     int                 m_nCurrentYBin;
 
     // guide sensor variables
-    ISensor::Info       m_mainSensorInfo;
     ISensor::Info       m_secondarySensorInfo;
     bool                m_bSecondaryIsColorCam;
     int                 m_SecondarySupportedBinsX[MAX_NB_BIN];
@@ -153,36 +160,17 @@ protected:
     int                 m_nSecondaryCurrentXBin;
     int                 m_nSecondaryCurrentYBin;
 
-    // status
-    ICamera::Status     m_CameraStatus;
-    double              m_dSetPoint;
-    bool                m_bSupportsCooler;
 
     // std::vector<std::string>    m_GainList;
     int                     m_nNbGainValue;
-
     long                    m_nGain;
-    long                    m_nExposureMs;
 
-    //int                     m_nBayerPattern;
     //int                     m_nMaxBitDepth;
 
-    bool                    m_bConnected;
- 
-    bool                    m_bDeviceIsUSB;
-    bool                    m_bAbort;
-    std::map<int,bool>      m_mAvailableFrameRate;
-    bool                    m_bCapturerunning;
-    
     CStopWatch              m_ExposureTimer;
     CStopWatch              m_ExposureTimerGuider;
     double                  m_dCaptureLenght;
     
-    int                     m_nROILeft;
-    int                     m_nROITop;
-    int                     m_nROIWidth;
-    int                     m_nROIHeight;
-
     std::vector<std::string>    m_GainList;
 #ifdef PLUGIN_DEBUG
     // timestamp for logs

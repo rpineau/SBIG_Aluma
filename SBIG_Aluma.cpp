@@ -21,7 +21,6 @@ CSBigAluma::CSBigAluma()
     m_nCurrentXBin = 1;
     m_nCurrentYBin = 1;
     m_dCaptureLenght = 0;
-    m_bCapturerunning = false;
     m_pSleeper = nullptr;
     m_nNbBin = 1;
     m_SupportedBinsX[0] = 1;
@@ -29,15 +28,8 @@ CSBigAluma::CSBigAluma()
 
     m_dSetPoint = -15.0;
 
-    m_nROILeft = 0;
-    m_nROITop = 0;
-    m_nROIWidth = 0;
-    m_nROIHeight = 0;
-
     m_nNbGainValue = 0;
-
     m_nGain = 0;
-    m_nExposureMs = (1 * 1000000);
 
 
 #ifdef PLUGIN_DEBUG
