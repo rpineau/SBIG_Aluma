@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		931843F01EEF350D00AE51F8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 931843EC1EEF350D00AE51F8 /* main.cpp */; };
+		931843F11EEF350D00AE51F8 /* main.h in Headers */ = {isa = PBXBuildFile; fileRef = 931843ED1EEF350D00AE51F8 /* main.h */; };
+		931843F21EEF350D00AE51F8 /* x2camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 931843EE1EEF350D00AE51F8 /* x2camera.cpp */; };
+		931843F31EEF350D00AE51F8 /* x2camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 931843EF1EEF350D00AE51F8 /* x2camera.h */; };
+		931843FB1EEF394F00AE51F8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931843FA1EEF394F00AE51F8 /* IOKit.framework */; };
+		931843FD1EEF395D00AE51F8 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931843FC1EEF395D00AE51F8 /* CoreFoundation.framework */; };
+		931844001EEF460500AE51F8 /* SBIG_Aluma.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 931843FE1EEF460500AE51F8 /* SBIG_Aluma.cpp */; };
+		931844011EEF460500AE51F8 /* SBIG_Aluma.h in Headers */ = {isa = PBXBuildFile; fileRef = 931843FF1EEF460500AE51F8 /* SBIG_Aluma.h */; };
+		931844041EEF502500AE51F8 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931844021EEF500B00AE51F8 /* CoreServices.framework */; };
+		9390466D25D7101E009D84F1 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9390466C25D7101E009D84F1 /* StopWatch.h */; };
+		93E3C58426B0F1E900FD3D20 /* libftd2xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */; };
+		93E3C58526B0F1E900FD3D20 /* libftd3xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */; };
+		93E3C58D26B23EEF00FD3D20 /* libdlapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58C26B23EEF00FD3D20 /* libdlapi.a */; };
+		93E3C58E26B23F1100FD3D20 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 931FED8126ADDD4400C8705A /* libcurl.tbd */; };
+		93E3C58F26B23F1700FD3D20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 931FED8826ADE0BF00C8705A /* libz.tbd */; };
+		93E4668F25C7956C00ECFB9D /* dlapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 93E4668E25C7956C00ECFB9D /* dlapi.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		931843E31EEF33FC00AE51F8 /* libSBIG_Aluma.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libSBIG_Aluma.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		931843EC1EEF350D00AE51F8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		931843ED1EEF350D00AE51F8 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		931843EE1EEF350D00AE51F8 /* x2camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = x2camera.cpp; sourceTree = "<group>"; };
+		931843EF1EEF350D00AE51F8 /* x2camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x2camera.h; sourceTree = "<group>"; };
+		931843FA1EEF394F00AE51F8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		931843FC1EEF395D00AE51F8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		931843FE1EEF460500AE51F8 /* SBIG_Aluma.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBIG_Aluma.cpp; sourceTree = "<group>"; };
+		931843FF1EEF460500AE51F8 /* SBIG_Aluma.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBIG_Aluma.h; sourceTree = "<group>"; };
+		931844021EEF500B00AE51F8 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		931844071EEF50D100AE51F8 /* libobjc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libobjc.tbd; path = usr/lib/libobjc.tbd; sourceTree = SDKROOT; };
+		931FED8126ADDD4400C8705A /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
+		931FED8826ADE0BF00C8705A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		931FEDAF26AFA87300C8705A /* libdlapi.2.0.2-1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdlapi.2.0.2-1.dylib"; path = "/usr/local/lib/libdlapi.2.0.2-1.dylib"; sourceTree = "<group>"; };
+		931FEDB526AFAA2B00C8705A /* libdlapi.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdlapi.2.dylib; path = /usr/local/lib/libdlapi.2.dylib; sourceTree = "<group>"; };
+		9390466C25D7101E009D84F1 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopWatch.h; sourceTree = "<group>"; };
+		93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd2xx.dylib; path = ../../../../../../../../usr/local/lib/libftd2xx.dylib; sourceTree = "<group>"; };
+		93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd3xx.dylib; path = ../../../../../../../../usr/local/lib/libftd3xx.dylib; sourceTree = "<group>"; };
+		93E3C58A26B23B5D00FD3D20 /* libdlapi.2.0.3-0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdlapi.2.0.3-0.dylib"; path = "../../../../../../../../usr/local/lib/libdlapi.2.0.3-0.dylib"; sourceTree = "<group>"; };
+		93E3C58C26B23EEF00FD3D20 /* libdlapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdlapi.a; path = static_libs/macOS/libdlapi.a; sourceTree = "<group>"; };
+		93E4668E25C7956C00ECFB9D /* dlapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dlapi.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		931843E01EEF33FC00AE51F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E3C58F26B23F1700FD3D20 /* libz.tbd in Frameworks */,
+				93E3C58E26B23F1100FD3D20 /* libcurl.tbd in Frameworks */,
+				93E3C58D26B23EEF00FD3D20 /* libdlapi.a in Frameworks */,
+				93E3C58426B0F1E900FD3D20 /* libftd2xx.dylib in Frameworks */,
+				93E3C58526B0F1E900FD3D20 /* libftd3xx.dylib in Frameworks */,
+				931844041EEF502500AE51F8 /* CoreServices.framework in Frameworks */,
+				931843FD1EEF395D00AE51F8 /* CoreFoundation.framework in Frameworks */,
+				931843FB1EEF394F00AE51F8 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		931843DA1EEF33FC00AE51F8 = {
+			isa = PBXGroup;
+			children = (
+				931843F41EEF391800AE51F8 /* Libs */,
+				931843EA1EEF341C00AE51F8 /* Sources */,
+				931843E41EEF33FC00AE51F8 /* Products */,
+				931843F91EEF394F00AE51F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		931843E41EEF33FC00AE51F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				931843E31EEF33FC00AE51F8 /* libSBIG_Aluma.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		931843EA1EEF341C00AE51F8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9390466C25D7101E009D84F1 /* StopWatch.h */,
+				93E4668E25C7956C00ECFB9D /* dlapi.h */,
+				931843EC1EEF350D00AE51F8 /* main.cpp */,
+				931843ED1EEF350D00AE51F8 /* main.h */,
+				931843EE1EEF350D00AE51F8 /* x2camera.cpp */,
+				931843EF1EEF350D00AE51F8 /* x2camera.h */,
+				931843FE1EEF460500AE51F8 /* SBIG_Aluma.cpp */,
+				931843FF1EEF460500AE51F8 /* SBIG_Aluma.h */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		931843F41EEF391800AE51F8 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				93E3C58C26B23EEF00FD3D20 /* libdlapi.a */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		931843F91EEF394F00AE51F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93E3C58A26B23B5D00FD3D20 /* libdlapi.2.0.3-0.dylib */,
+				93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */,
+				93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */,
+				931FEDB526AFAA2B00C8705A /* libdlapi.2.dylib */,
+				931FEDAF26AFA87300C8705A /* libdlapi.2.0.2-1.dylib */,
+				931FED8826ADE0BF00C8705A /* libz.tbd */,
+				931FED8126ADDD4400C8705A /* libcurl.tbd */,
+				931844071EEF50D100AE51F8 /* libobjc.tbd */,
+				931844021EEF500B00AE51F8 /* CoreServices.framework */,
+				931843FC1EEF395D00AE51F8 /* CoreFoundation.framework */,
+				931843FA1EEF394F00AE51F8 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		931843E11EEF33FC00AE51F8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931843F11EEF350D00AE51F8 /* main.h in Headers */,
+				931844011EEF460500AE51F8 /* SBIG_Aluma.h in Headers */,
+				9390466D25D7101E009D84F1 /* StopWatch.h in Headers */,
+				93E4668F25C7956C00ECFB9D /* dlapi.h in Headers */,
+				931843F31EEF350D00AE51F8 /* x2camera.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		931843E21EEF33FC00AE51F8 /* SBIG_Aluma */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 931843E71EEF33FC00AE51F8 /* Build configuration list for PBXNativeTarget "SBIG_Aluma" */;
+			buildPhases = (
+				931843DF1EEF33FC00AE51F8 /* Sources */,
+				931843E01EEF33FC00AE51F8 /* Frameworks */,
+				931843E11EEF33FC00AE51F8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SBIG_Aluma;
+			productName = SBIG_Aluma;
+			productReference = 931843E31EEF33FC00AE51F8 /* libSBIG_Aluma.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		931843DB1EEF33FC00AE51F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = "RTI-Zone";
+				TargetAttributes = {
+					931843E21EEF33FC00AE51F8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = PB97QXVYQC;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 931843DE1EEF33FC00AE51F8 /* Build configuration list for PBXProject "SBIG_Aluma" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 931843DA1EEF33FC00AE51F8;
+			productRefGroup = 931843E41EEF33FC00AE51F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				931843E21EEF33FC00AE51F8 /* SBIG_Aluma */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		931843DF1EEF33FC00AE51F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				931844001EEF460500AE51F8 /* SBIG_Aluma.cpp in Sources */,
+				931843F21EEF350D00AE51F8 /* x2camera.cpp in Sources */,
+				931843F01EEF350D00AE51F8 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		931843E51EEF33FC00AE51F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = SB_MAC_BUILD;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/\"",
+					"\"$(SRCROOT)/../..\"",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		931843E61EEF33FC00AE51F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_NO_COMMON_BLOCKS = YES;
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = SB_MAC_BUILD;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/\"",
+					"\"$(SRCROOT)/../..\"",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		931843E81EEF33FC00AE51F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/static_libs/macOS",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		931843E91EEF33FC00AE51F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				INSTALL_PATH = "@rpath";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/static_libs/macOS",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		931843DE1EEF33FC00AE51F8 /* Build configuration list for PBXProject "SBIG_Aluma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931843E51EEF33FC00AE51F8 /* Debug */,
+				931843E61EEF33FC00AE51F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		931843E71EEF33FC00AE51F8 /* Build configuration list for PBXNativeTarget "SBIG_Aluma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				931843E81EEF33FC00AE51F8 /* Debug */,
+				931843E91EEF33FC00AE51F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 931843DB1EEF33FC00AE51F8 /* Project object */;
+}
