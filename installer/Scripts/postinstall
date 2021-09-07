@@ -30,8 +30,8 @@ echo "Installing in $PLUGINS_DIR/CameraPlugIns/"
 cp "/tmp/SBIG_Aluma_X2/cameralist SBIG_Aluma.txt" "$TheSkyX_Path/Resources/Common/Miscellaneous Files/"
 if [ "$?" -ne "0" ]; then exit 1; fi
 
-rm -f "$PLUGINS_DIR/CameraPlugIns/SBIG_AlumaCamSelect.ui"
-cp "/tmp/SBIG_Aluma_X2/SBIG_AlumaCamSelect.ui" "$PLUGINS_DIR/CameraPlugIns/"
+rm -f "$PLUGINS_DIR/CameraPlugIns/SBIG_CamSelect.ui"
+cp "/tmp/SBIG_Aluma_X2/SBIG_CamSelect.ui" "$PLUGINS_DIR/CameraPlugIns/"
 if [ "$?" -ne "0" ]; then exit 1; fi
 
 rm -f "$PLUGINS_DIR/CameraPlugIns/SBIG_AlumaCamera.ui"
@@ -58,7 +58,7 @@ chmod 755 "/usr/local/lib/libftd3xx.dylib"
 app_owner=`/usr/bin/stat -n -f "%u" "$TheSkyX_Path" | xargs id -n -u`
 if [ ! -z "$app_owner" ]; then
 	chown $app_owner "$TheSkyX_Path/Resources/Common/Miscellaneous Files/cameralist SBIG_Aluma.txt"
-	chown $app_owner "$PLUGINS_DIR/CameraPlugIns/SBIG_AlumaCamSelect.ui"
+	chown $app_owner "$PLUGINS_DIR/CameraPlugIns/SBIG_CamSelect.ui"
 	chown $app_owner "$PLUGINS_DIR/CameraPlugIns/SBIG_AlumaCamera.ui"
 	chown $app_owner "$PLUGINS_DIR/CameraPlugIns/SBIG_Aluma.png"
 	chown $app_owner "$PLUGINS_DIR/CameraPlugIns/libSBIG_Aluma.dylib"

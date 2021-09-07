@@ -1,19 +1,21 @@
 #!/bin/bash
 
 PACKAGE_NAME="SBIG_Aluma_X2.pkg"
-BUNDLE_NAME="org.rti-zone.SBIG_AlumaX2"
+BUNDLE_NAME="org.rti-zone.SBIGAlumaX2"
 
 install_name_tool -change  libftd2xx.dylib /usr/local/lib/libftd2xx.dylib ../build/Release/libSBIG_Aluma.dylib
 install_name_tool -change  libftd3xx.dylib /usr/local/lib/libftd3xx.dylib ../build/Release/libSBIG_Aluma.dylib
 
 if [ ! -z "$app_id_signature" ]; then
 codesign -f -s "$app_id_signature" --verbose ../build/Release/libSBIG_Aluma.dylib
+codesign -f -s "$app_id_signature" --verbose ../dyn_libs/macos/libftd2xx.dylib
+codesign -f -s "$app_id_signature" --verbose ../dyn_libs/macos/libftd3xx.dylib
 fi
 
 
 mkdir -p ROOT/tmp/SBIG_Aluma_X2/
 cp "../SBIG_AlumaCamera.ui" ROOT/tmp/SBIG_Aluma_X2/
-cp "../SBIG_AlumaCamSelect.ui" ROOT/tmp/SBIG_Aluma_X2/
+cp "../SBIG_CamSelect.ui" ROOT/tmp/SBIG_Aluma_X2/
 cp "../SBIG_Aluma.png" ROOT/tmp/SBIG_Aluma_X2/
 cp "../cameralist SBIG_Aluma.txt" ROOT/tmp/SBIG_Aluma_X2/
 cp "../build/Release/libSBIG_Aluma.dylib" ROOT/tmp/SBIG_Aluma_X2/

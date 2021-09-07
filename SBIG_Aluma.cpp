@@ -681,6 +681,11 @@ bool CSBigAluma::isXferComplete(IPromise * pPromise)
 {
     // Get the status of the promise
     auto status = pPromise->getStatus();
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [isXferComplete] pPromise->getStatus() : " << status << std::endl;
+    m_sLogFile.flush();
+#endif
+
     if (status == IPromise::Complete)
     {
         // The image is ready for retrieval.
