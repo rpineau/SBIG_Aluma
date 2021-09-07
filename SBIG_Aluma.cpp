@@ -144,9 +144,12 @@ int CSBigAluma::Connect(int nCameraID)
 #endif
 
     // get camera properties
-    pMainSensor = m_pCamera->getSensor(0);
-    if(m_Camera.nbSensors>1)
-        pSecondarySensor = m_pCamera->getSensor(1);
+    pMainSensor = m_pCamera->getSensor(MAIN_SENSOR);
+    handlePromise(pMainSensor->abortExposure());
+    if(m_Camera.nbSensors>1) {
+        pSecondarySensor = m_pCamera->getSensor(GUIDER);
+        handlePromise(pSecondarySensor->abortExposure());
+    }
 
     m_mainSensorInfo = pMainSensor->getInfo();
     if(m_mainSensorInfo.filterType == Color || m_mainSensorInfo.filterType == SparseColor)
