@@ -48,7 +48,7 @@ CSBigAluma::CSBigAluma()
 #endif
 
 #if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
-    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [CSBigAluma] Version " << std::fixed << std::setprecision(2) << PLUGIN_VERSION << std::endl;
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [CSBigAluma] Version " << std::fixed << std::setprecision(2) << PLUGIN_VERSION << " build " << __DATE__ << " " << __TIME__ << std::endl;
     m_sLogFile << "["<<getTimeStamp()<<"]"<< " [CSBigAluma] Constructor Called." << std::endl;
     m_sLogFile.flush();
 #endif
