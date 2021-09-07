@@ -105,7 +105,7 @@ int X2Camera::execModalSettingsDialog()
     bool bCameraFoud = false;
     if (NULL == ui)
         return ERR_POINTER;
-    nErr = ui->loadUserInterface("CamSelect.ui", deviceType(), m_nPrivateISIndex);
+    nErr = ui->loadUserInterface("SBIG_CamSelect.ui", deviceType(), m_nPrivateISIndex);
     if (nErr)
         return nErr;
 
