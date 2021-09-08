@@ -12,6 +12,7 @@ CSBigAluma::CSBigAluma()
 {
     m_bConnected = false;
     m_bAbort = false;
+    m_bPromiseTimedOut = false;
 
     m_pGateway = nullptr;
     m_pCamera = nullptr;
@@ -100,9 +101,11 @@ void CSBigAluma::handlePromise(IPromisePtr pPromise)
         m_sLogFile.flush();
 #endif
         pPromise->release();
+        m_bPromiseTimedOut = true;
         throw std::logic_error(std::string(&(buf[0]), lng));
     }
     pPromise->release();
+    m_bPromiseTimedOut = false;
 }
 
 void CSBigAluma::setCameraConnection(dl::ICameraPtr pCamera, bool enable)
@@ -552,6 +555,9 @@ int CSBigAluma::startCaputure(int nSensorID, double dTime, bool bIsLightFrame, i
     m_sLogFile.flush();
 #endif
 
+    if(m_bPromiseTimedOut) // we return as this will also timeout as the promise from the camera are broken at this point
+        return ERR_CMDFAILED;
+
     TExposureOptions options;
     try{
         options.duration = dTime;
@@ -626,6 +632,9 @@ int CSBigAluma::setROI(int nSensorID, int nLeft, int nTop, int nWidth, int nHeig
     m_sLogFile << "["<<getTimeStamp()<<"]"<< " [setROI] nHeight   = " << nHeight << std::endl;
     m_sLogFile.flush();
 #endif
+
+    if(m_bPromiseTimedOut) // we return as this will also timeout as the promise from the camera are broken at this point
+        return ERR_CMDFAILED;
 
     try {
         pSensor = m_pCamera->getSensor(nSensorID);
@@ -734,6 +743,9 @@ int CSBigAluma::downloadFrame(int nSensorID)
     IPromisePtr pImgPromise;
     ISensorPtr pSensor = nullptr;
 
+    if(m_bPromiseTimedOut)
+        return ERR_CMDFAILED;
+
     try {
         // Start the download & wait for transfer complete
 #if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
@@ -745,8 +757,9 @@ int CSBigAluma::downloadFrame(int nSensorID)
 
         timeout = 0;
         while (!isXferComplete(pImgPromise)) {
-            if(timeout > RX_TIMEOUT) {// 10 second timeout ? should be enough for testing.
+            if(timeout > RX_TIMEOUT) {// 15 second timeout ? should be enough for testing.
                 pImgPromise->release();
+                m_bPromiseTimedOut = true;
                 return ERR_RXTIMEOUT;
             }
             m_pSleeper->sleep(RX_WAIT);
@@ -822,6 +835,8 @@ int CSBigAluma::getTemperture(double &dTemp, double &dPower, double &dSetPoint, 
     m_sLogFile << "["<<getTimeStamp()<<"]"<< " [getTemperture] " << std::endl;
     m_sLogFile.flush();
 #endif
+    if(m_bPromiseTimedOut) // we return as this will also timeout as the promise from the camera are broken at this point
+        return nErr;
 
     if(!m_bSupportsCooler) {
         dTemp = -100.0;

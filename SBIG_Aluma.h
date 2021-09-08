@@ -43,7 +43,7 @@
 #define MAX_NB_BIN  16
 
 #define RX_WAIT 10
-#define RX_TIMEOUT 10000 // 10 seconds
+#define RX_TIMEOUT 15000 // 15 seconds
 
 #define MAKE_ERR_CODE(P_ID, DTYPE, ERR_CODE)  (((P_ID<<24) & 0xff000000) | ((DTYPE<<16) & 0x00ff0000)  | (ERR_CODE & 0x0000ffff))
 #define PLUGIN_ID   46
@@ -141,8 +141,9 @@ protected:
 
     SleeperInterface    *m_pSleeper;
 
-    bool                    m_bConnected;
-    bool                    m_bAbort;
+    bool                m_bConnected;
+    bool                m_bAbort;
+    bool                m_bPromiseTimedOut;
 
     camera_info_t               m_Camera;
     std::vector<camera_info_t>  m_tcameraList;
