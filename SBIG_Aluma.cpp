@@ -11,23 +11,42 @@
 CSBigAluma::CSBigAluma()
 {
     m_bConnected = false;
+    m_bAbort = false;
 
     m_pGateway = nullptr;
     m_pCamera = nullptr;
 
+    m_dSetPoint = -15;
+    m_bSupportsCooler = false;
+    m_bSupportGuiding = false;
+
+    m_bIsColorCam = false;
+    
     m_tcameraList.clear();
-    //
-    m_bAbort = false;
-    m_nCurrentXBin = 1;
-    m_nCurrentYBin = 1;
-    m_dCaptureLenght = 0;
-    m_pSleeper = nullptr;
-    m_nNbBin = 1;
+
     m_SupportedBinsX[0] = 1;
     m_SupportedBinsY[0] = 1;
+    m_nNbBin = 1;
+    m_nCurrentXBin = 1;
+    m_nCurrentYBin = 1;
 
-    m_dSetPoint = -15.0;
+    m_bSecondaryIsColorCam = false;
 
+    m_SecondarySupportedBinsX[0] = 1;
+    m_SecondarySupportedBinsY[0] = 1;
+    m_nSecondaryNbBin = 1;
+    m_nSecondaryCurrentXBin = 1;
+    m_nSecondaryCurrentYBin = 1;
+
+    m_dCaptureLenght = 0;
+    m_pSleeper = nullptr;
+
+
+
+    m_ReadoutModeList.clear();
+    m_nNbReadoutModeValue = 0;
+
+    m_GainList.clear();
     m_nNbGainValue = 0;
     m_nGain = 0;
 
@@ -223,6 +242,7 @@ int CSBigAluma::Connect(int nCameraID)
         m_bSupportsCooler = false;
     }
 
+    m_bSupportGuiding = isGuidePortPresent();
     return nErr;
 }
 
@@ -516,7 +536,7 @@ bool CSBigAluma::isShutterPresent()
     return bShutterPresent;
 }
 
-
+#pragma mark - TODO : deal with readout mode.
 int CSBigAluma::startCaputure(int nSensorID, double dTime, bool bIsLightFrame, int nReadoutMode, bool bUseRBIFlash)
 {
     int nErr = PLUGIN_OK;
@@ -547,6 +567,7 @@ int CSBigAluma::startCaputure(int nSensorID, double dTime, bool bIsLightFrame, i
             options.binX = 1;
             options.binY = 1;
         }
+
         options.readoutMode = nReadoutMode; // See: ISensor::getReadoutModes()
         options.isLightFrame = bIsLightFrame;
         options.useRBIPreflash = bUseRBIFlash;
@@ -765,6 +786,10 @@ int CSBigAluma::getFrame(int nSensorID, int nHeight, int nMemWidth, unsigned cha
     m_sLogFile.flush();
 #endif
     try {
+        nErr = downloadFrame(nSensorID);
+        if(nErr)
+            return nErr;
+        
         pSensor = m_pCamera->getSensor(nSensorID);
         pImage = pSensor->getImage();
 #if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
@@ -1021,6 +1046,33 @@ int CSBigAluma::setGain(long nGain)
     return nErr;
 }
 
+bool CSBigAluma::isGuidePortPresent()
+{
+    bool bGuidePortPresent;
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [isGuidePortPresent]" << std::endl;
+    m_sLogFile.flush();
+#endif
+
+    try{
+        handlePromise(m_pCamera->queryCapability(ICamera::eSupportsGuidePort));
+        bGuidePortPresent = m_pCamera->getCapability(ICamera::eSupportsGuidePort);
+    }
+    catch (std::exception &ex) {
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+        m_sLogFile << "["<<getTimeStamp()<<"]"<< " [isGuidePortPresent] Exeception = " << ex.what() << std::endl;
+        m_sLogFile.flush();
+#endif
+        bGuidePortPresent = false;
+    }
+
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [isGuidePortPresent] bShutterPresent = " << (bGuidePortPresent?"Yes":"No" )<< std::endl;
+    m_sLogFile.flush();
+#endif
+    return bGuidePortPresent;
+}
+
 int CSBigAluma::RelayActivate(const int nXPlus, const int nXMinus, const int nYPlus, const int nYMinus, const bool bSynchronous, const bool bAbort)
 {
     int nErr = PLUGIN_OK;
@@ -1056,6 +1108,7 @@ void CSBigAluma::buildGainList(long nMin, long nMax, long nValue)
     m_GainList.push_back(std::to_string(nMax));
     m_nNbGainValue++;
 }
+
 int CSBigAluma::getNbGainInList()
 {
 #if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
@@ -1089,6 +1142,85 @@ std::string CSBigAluma::getGainFromListAtIndex(int nIndex)
         return m_GainList.at(nIndex);
     else
         return std::string("N/A");
+}
+
+void CSBigAluma::buidldReadoutModeList()
+{
+    int nErr;
+    char buf[1028];
+    size_t lng = 1028;
+    ISensorPtr pSensor;
+
+    pSensor = m_pCamera->getSensor(0);
+    pSensor->getReadoutModes(&(buf[0]), lng);
+
+    m_ReadoutModeList.clear();
+    // build the list from the abover buffer, separator is \n
+    nErr = parseFields(std::string(buf), m_ReadoutModeList, '\n');
+    m_nNbReadoutModeValue = m_ReadoutModeList.size();
+
+}
+
+unsigned long CSBigAluma::getNbReadoutModeInList()
+{
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [getNbGainInList] m_nNbGainValue = " << m_nNbGainValue << std::endl;
+    m_sLogFile.flush();
+#endif
+
+    return m_nNbReadoutModeValue;
+}
+
+std::string CSBigAluma::getReadoutModeFromListAtIndex(int nIndex)
+{
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 2
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [getReadoutModeFromListAtIndex] nIndex = " << nIndex << std::endl;
+    m_sLogFile.flush();
+#endif
+
+    if(nIndex<m_ReadoutModeList.size())
+        return m_ReadoutModeList.at(nIndex);
+    else
+        return std::string("N/A");
+
+}
+void CSBigAluma:: rebuildReadoutModeList()
+{
+
+}
+
+
+int CSBigAluma::parseFields(std::string sInput, std::vector<std::string> &svFields, char cSeparator)
+{
+    int nErr = PLUGIN_OK;
+    std::string sSegment;
+
+#ifdef PLUGIN_DEBUG
+    m_sLogFile << "["<<getTimeStamp()<<"]"<< " [parseFields] sResp = " << sInput << std::endl;
+    m_sLogFile.flush();
+#endif
+
+    if(sInput.size()==0) {
+        return MAKE_ERR_CODE(PLUGIN_ID, DriverRootInterface::DT_CAMERA, ERR_CMDFAILED);
+    }
+
+    std::stringstream ssTmp(sInput);
+
+    svFields.clear();
+    // split the string into vector elements
+    while(std::getline(ssTmp, sSegment, cSeparator))
+    {
+#if defined PLUGIN_DEBUG && PLUGIN_DEBUG >= 3
+        m_sLogFile << "["<<getTimeStamp()<<"]"<< " [parseFields] sSegment = " << sSegment << std::endl;
+        m_sLogFile.flush();
+#endif
+        svFields.push_back(sSegment);
+    }
+
+    if(svFields.size()==0) {
+        nErr = MAKE_ERR_CODE(PLUGIN_ID, DriverRootInterface::DT_CAMERA, ERR_CMDFAILED);
+    }
+    return nErr;
 }
 
 #ifdef PLUGIN_DEBUG

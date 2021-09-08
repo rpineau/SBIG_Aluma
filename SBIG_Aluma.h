@@ -27,6 +27,7 @@
 #include <unistd.h>
 #endif
 
+#include "../../licensedinterfaces/driverrootinterface.h"
 #include "../../licensedinterfaces/sberrorx.h"
 #include "../../licensedinterfaces/loggerinterface.h"
 #include "../../licensedinterfaces/sleeperinterface.h"
@@ -43,6 +44,10 @@
 
 #define RX_WAIT 10
 #define RX_TIMEOUT 10000 // 10 seconds
+
+#define MAKE_ERR_CODE(P_ID, DTYPE, ERR_CODE)  (((P_ID<<24) & 0xff000000) | ((DTYPE<<16) & 0x00ff0000)  | (ERR_CODE & 0x0000ffff))
+#define PLUGIN_ID   46
+
 
 enum Sensors {MAIN_SENSOR=0, GUIDER};
 
@@ -114,11 +119,16 @@ public:
     void        getGain(long &nMin, long &nMax, long &nValue);
     int         setGain(long nGain);
 
+    bool        isGuidePortPresent();
     int         RelayActivate(const int nXPlus, const int nXMinus, const int nYPlus, const int nYMinus, const bool bSynchronous, const bool bAbort);
 
     int         getNbGainInList();
     std::string getGainFromListAtIndex(int nIndex);
     void        rebuildGainList();
+
+    unsigned long   getNbReadoutModeInList();
+    std::string     getReadoutModeFromListAtIndex(int nIndex);
+    void            rebuildReadoutModeList();
 
 protected:
     void        handlePromise(IPromisePtr pPromise);
@@ -126,10 +136,12 @@ protected:
     void        getCoolerMinMax(ISensorPtr pSensor, int & min, int & max);
     void        buildGainList(long nMin, long nMax, long nValue);
 
+    void        buidldReadoutModeList();
+    int         parseFields(std::string sInput, std::vector<std::string> &svFields, char cSeparator);
+
     SleeperInterface    *m_pSleeper;
 
     bool                    m_bConnected;
-    bool                    m_bDeviceIsUSB;
     bool                    m_bAbort;
 
     camera_info_t               m_Camera;
@@ -141,6 +153,7 @@ protected:
     ICamera::Status     m_CameraStatus;
     double              m_dSetPoint;
     bool                m_bSupportsCooler;
+    bool                m_bSupportGuiding;
 
     // Main sensor variables
     ISensor::Info       m_mainSensorInfo;
@@ -161,9 +174,12 @@ protected:
     int                 m_nSecondaryCurrentYBin;
 
 
-    // std::vector<std::string>    m_GainList;
-    int                     m_nNbGainValue;
-    long                    m_nGain;
+    std::vector<std::string>    m_ReadoutModeList;
+    unsigned long               m_nNbReadoutModeValue;
+
+    std::vector<std::string>    m_GainList;
+    int                         m_nNbGainValue;
+    long                        m_nGain;
 
     //int                     m_nMaxBitDepth;
 
@@ -171,7 +187,7 @@ protected:
     CStopWatch              m_ExposureTimerGuider;
     double                  m_dCaptureLenght;
     
-    std::vector<std::string>    m_GainList;
+
 #ifdef PLUGIN_DEBUG
     // timestamp for logs
     const std::string getTimeStamp();

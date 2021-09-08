@@ -471,7 +471,8 @@ int X2Camera::CCEndExposure(const enumCameraIndex& Cam, const enumWhichCCD CCD, 
         m_Camera.abortCapture(mapWhichCCDToSensorId(CCD));
 	}
 
-    nErr = m_Camera.downloadFrame(mapWhichCCDToSensorId(CCD));
+    //  done in m_Camera.getFrame
+    // nErr = m_Camera.downloadFrame(mapWhichCCDToSensorId(CCD));
 
     return nErr;
 }
@@ -871,10 +872,6 @@ int X2Camera::CCStartExposureAdditionalArgInterface (const enumCameraIndex &Cam,
     bool bLight = true;
     int nErr = SB_OK;
 
-    // should we use gain, readout mode (low nooise...), RBI flash ??... we can only have one.
-    //nErr = m_Camera.setGain(std::stol(m_Camera.getGainFromListAtIndex(nIndex)));
-    //if(nErr)
-    //    return nErr; // can't set gain !
 
     switch (Type)
     {
