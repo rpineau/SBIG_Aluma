@@ -21,6 +21,7 @@
 #include <iomanip>
 #include <fstream>
 #include <chrono>
+#include <thread>
 #include <ctime>
 
 #ifndef SB_WIN_BUILD
@@ -29,8 +30,6 @@
 
 #include "../../licensedinterfaces/driverrootinterface.h"
 #include "../../licensedinterfaces/sberrorx.h"
-#include "../../licensedinterfaces/loggerinterface.h"
-#include "../../licensedinterfaces/sleeperinterface.h"
 
 #include "dlapi.h"
 #include "StopWatch.h"
@@ -66,8 +65,6 @@ class CSBigAluma {
 public:
     CSBigAluma();
     ~CSBigAluma();
-
-    void        setSleeper(SleeperInterface *pSleeper) { m_pSleeper = pSleeper; };
 
     int         Connect(int nCameraID);
     void        Disconnect(void);
@@ -138,8 +135,6 @@ protected:
 
     void        buidldReadoutModeList();
     int         parseFields(std::string sInput, std::vector<std::string> &svFields, char cSeparator);
-
-    SleeperInterface    *m_pSleeper;
 
     bool                m_bConnected;
     bool                m_bAbort;

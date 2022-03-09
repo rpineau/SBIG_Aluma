@@ -40,7 +40,6 @@ CSBigAluma::CSBigAluma()
     m_nSecondaryCurrentYBin = 1;
 
     m_dCaptureLenght = 0;
-    m_pSleeper = nullptr;
 
 
 
@@ -762,7 +761,7 @@ int CSBigAluma::downloadFrame(int nSensorID)
                 m_bPromiseTimedOut = true;
                 return ERR_RXTIMEOUT;
             }
-            m_pSleeper->sleep(RX_WAIT);
+            std::this_thread::sleep_for(std::chrono::milliseconds(RX_WAIT));
             timeout +=RX_WAIT;
         }
 
@@ -1006,7 +1005,7 @@ void CSBigAluma::getBayerPattern(int nSensorID, std::string &sBayerPattern)
             sBayerPattern = "MONO";
             return ;
         }
-
+        // GBRG for SFT-4070C
         switch(info.model) {
             case ISensor::ICX694 :
                 sBayerPattern = "RGBG";

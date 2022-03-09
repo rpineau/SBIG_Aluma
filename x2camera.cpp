@@ -21,7 +21,7 @@ X2Camera::X2Camera( const char* pszSelection,
 	m_pTheSkyXForMounts				= pTheSkyXForMounts;
 	m_pSleeper						= pSleeper;
 	m_pIniUtil						= pIniUtil;
-	m_pLogger						= pLogger;	
+	m_pLogger						= pLogger;
 	m_pIOMutex						= pIOMutex;
 	m_pTickCount					= pTickCount;
 
@@ -34,13 +34,10 @@ X2Camera::X2Camera( const char* pszSelection,
     m_nReadoutMode = 0;
     m_bUseRBIFlash = false;
 
-    m_Camera.setSleeper(m_pSleeper);
-        
     // Read in settings
     if (m_pIniUtil) {
         m_pIniUtil->readString(KEY_X2CAM_ROOT, KEY_SERIAL, "0", m_szCameraSerial, 128);
         m_Camera.getCameraIdFromSerial(std::stoi(m_szCameraSerial), m_nCameraID);
-
 
         /*
         nValue = m_pIniUtil->readInt(KEY_X2CAM_ROOT, KEY_GAIN, 10);
