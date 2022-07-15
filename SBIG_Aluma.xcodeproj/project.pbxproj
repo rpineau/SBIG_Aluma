@@ -17,8 +17,8 @@
 		931844011EEF460500AE51F8 /* SBIG_Aluma.h in Headers */ = {isa = PBXBuildFile; fileRef = 931843FF1EEF460500AE51F8 /* SBIG_Aluma.h */; };
 		931844041EEF502500AE51F8 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931844021EEF500B00AE51F8 /* CoreServices.framework */; };
 		9390466D25D7101E009D84F1 /* StopWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9390466C25D7101E009D84F1 /* StopWatch.h */; };
-		93E3C58426B0F1E900FD3D20 /* libftd2xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */; };
-		93E3C58526B0F1E900FD3D20 /* libftd3xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */; };
+		93DF792F28820EFE004B3260 /* libftd3xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DF792D28820EFE004B3260 /* libftd3xx.dylib */; };
+		93DF793028820EFE004B3260 /* libftd2xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DF792E28820EFE004B3260 /* libftd2xx.dylib */; };
 		93E3C58D26B23EEF00FD3D20 /* libdlapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E3C58C26B23EEF00FD3D20 /* libdlapi.a */; };
 		93E3C58E26B23F1100FD3D20 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 931FED8126ADDD4400C8705A /* libcurl.tbd */; };
 		93E3C58F26B23F1700FD3D20 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 931FED8826ADE0BF00C8705A /* libz.tbd */; };
@@ -42,6 +42,8 @@
 		931FEDAF26AFA87300C8705A /* libdlapi.2.0.2-1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdlapi.2.0.2-1.dylib"; path = "/usr/local/lib/libdlapi.2.0.2-1.dylib"; sourceTree = "<group>"; };
 		931FEDB526AFAA2B00C8705A /* libdlapi.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdlapi.2.dylib; path = /usr/local/lib/libdlapi.2.dylib; sourceTree = "<group>"; };
 		9390466C25D7101E009D84F1 /* StopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopWatch.h; sourceTree = "<group>"; };
+		93DF792D28820EFE004B3260 /* libftd3xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd3xx.dylib; path = dyn_libs/macos/libftd3xx.dylib; sourceTree = "<group>"; };
+		93DF792E28820EFE004B3260 /* libftd2xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd2xx.dylib; path = dyn_libs/macos/libftd2xx.dylib; sourceTree = "<group>"; };
 		93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd2xx.dylib; path = ../../../../../../../../usr/local/lib/libftd2xx.dylib; sourceTree = "<group>"; };
 		93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd3xx.dylib; path = ../../../../../../../../usr/local/lib/libftd3xx.dylib; sourceTree = "<group>"; };
 		93E3C58A26B23B5D00FD3D20 /* libdlapi.2.0.3-0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libdlapi.2.0.3-0.dylib"; path = "../../../../../../../../usr/local/lib/libdlapi.2.0.3-0.dylib"; sourceTree = "<group>"; };
@@ -54,11 +56,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DF792F28820EFE004B3260 /* libftd3xx.dylib in Frameworks */,
+				93DF793028820EFE004B3260 /* libftd2xx.dylib in Frameworks */,
 				93E3C58F26B23F1700FD3D20 /* libz.tbd in Frameworks */,
 				93E3C58E26B23F1100FD3D20 /* libcurl.tbd in Frameworks */,
 				93E3C58D26B23EEF00FD3D20 /* libdlapi.a in Frameworks */,
-				93E3C58426B0F1E900FD3D20 /* libftd2xx.dylib in Frameworks */,
-				93E3C58526B0F1E900FD3D20 /* libftd3xx.dylib in Frameworks */,
 				931844041EEF502500AE51F8 /* CoreServices.framework in Frameworks */,
 				931843FD1EEF395D00AE51F8 /* CoreFoundation.framework in Frameworks */,
 				931843FB1EEF394F00AE51F8 /* IOKit.framework in Frameworks */,
@@ -112,6 +114,8 @@
 		931843F91EEF394F00AE51F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93DF792E28820EFE004B3260 /* libftd2xx.dylib */,
+				93DF792D28820EFE004B3260 /* libftd3xx.dylib */,
 				93E3C58A26B23B5D00FD3D20 /* libdlapi.2.0.3-0.dylib */,
 				93E3C58226B0F1E900FD3D20 /* libftd2xx.dylib */,
 				93E3C58326B0F1E900FD3D20 /* libftd3xx.dylib */,
@@ -347,6 +351,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/static_libs/macOS",
+					"$(PROJECT_DIR)/dyn_libs/macos",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = NO;
@@ -365,6 +370,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/static_libs/macOS",
+					"$(PROJECT_DIR)/dyn_libs/macos",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_NAME = "$(TARGET_NAME)";
