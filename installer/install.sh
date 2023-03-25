@@ -39,7 +39,7 @@ cp "./cameralist SBIG_Aluma.txt" "$TheSkyX_Path/Resources/Common/Miscellaneous F
 cp "./SBIG_AlumaCamera.ui" "$TheSkyX_Path/Resources/Common/$PLUGINS_DIR/CameraPlugIns/"
 cp "./SBIG_AlumaCamSelect.ui" "$TheSkyX_Path/Resources/Common/$PLUGINS_DIR/CameraPlugIns/"
 cp "./libSBIG_Aluma.so" "$TheSkyX_Path/Resources/Common/$PLUGINS_DIR/CameraPlugIns/"
-sudo cp -f "./90-ckusb.rules" "/etc/udev/rules.d/"
+sudo cp -f "./51-aluma-debian.rules " "/etc/udev/rules.d/"
 
 app_owner=`/usr/bin/stat -c "%u" "$TheSkyX_Path" | xargs id -n -u`
 if [ ! -z "$app_owner" ]; then
@@ -49,5 +49,7 @@ if [ ! -z "$app_owner" ]; then
 	chown $app_owner "$TheSkyX_Path/Resources/Common/$PLUGINS_DIR/CameraPlugIns/libSBIG_Aluma.so"
 fi
 chmod  755 "$TheSkyX_Path/Resources/Common/$PLUGINS_DIR/CameraPlugIns/libSBIG_Aluma.so"
-sudo systemctl restart udev
+sudo udevadm control --reload
+sudo udevadm trigger
+
 
