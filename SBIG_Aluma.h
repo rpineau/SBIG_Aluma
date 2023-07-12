@@ -13,6 +13,8 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
+
 #include <string>
 #include <vector>
 #include <sstream>
